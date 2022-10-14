@@ -18,7 +18,7 @@ public class BookDTO {
     private String bookDescription;
     @NotNull(message = "book image cant be null")
     private String bookImage;
-    @NotNull (message = "price cant be empty")
+    @NotNull (message = "totalPrice cant be empty")
     private Integer price;
     @NotNull(message = "Quantity cant be empty")
     private Integer quantity;

@@ -11,8 +11,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-
-
     @Slf4j
     @Service
     public class UserService implements IUserService {
@@ -36,18 +34,18 @@ import java.util.Optional;
             return list;
         }
 
-        public User getDataById(Integer id) {
-            Optional<User> newUser = repository.findById(id);
+        public User getDataById(Integer userId) {
+            Optional<User> newUser = repository.findById(userId);
             if (newUser.isPresent()) {
                 return newUser.get();
             } else throw new UserException("Book id not found");
         }
 
 
-        public User updateDataById(Integer id, UserDTO userDTO) {
-            Optional<User> newUser = repository.findById(id);
+        public User updateDataById(Integer userId, UserDTO userDTO) {
+            Optional<User> newUser = repository.findById(userId);
             if (newUser.isPresent()) {
-                User user = new User(id, userDTO);
+                User user = new User(userId, userDTO);
                 repository.save(user);
                 return user;
             } else {
@@ -55,14 +53,14 @@ import java.util.Optional;
             }
         }
 
-        public String deleteDataById(Integer id) {
-            Optional<User> newUser = repository.findById(id);
+        public String deleteDataById(Integer userId) {
+            Optional<User> newUser = repository.findById(userId);
             if (newUser.isPresent()) {
-                repository.deleteById(id);
+                repository.deleteById(userId);
             } else {
                 throw new UserException("Book Details not found");
             }
-            return null;
+            return "Book deleted successfully ";
         }
 
 

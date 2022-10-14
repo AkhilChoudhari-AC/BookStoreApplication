@@ -5,6 +5,7 @@ import lombok.Data;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 
@@ -14,8 +15,8 @@ import javax.persistence.Id;
 @Data
 public class User {
     @Id
-    @GeneratedValue
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer userId;
     private String firstName;
     private String lastName;
     private String email;
@@ -33,8 +34,8 @@ public class User {
         this.address = dto.getAddress();
         this.password = dto.getPassword();
     }
-    public User(Integer id,UserDTO userDTO){
-        this.id = id;
+    public User(Integer userId,UserDTO userDTO){
+        this.userId = userId;
         this.firstName = userDTO.getFirstName();
         this.lastName = userDTO.getLastName();
         this.email = userDTO.getEmail();

@@ -45,27 +45,27 @@ public class BookController {
 
     // Ability to call api to get record by BookId
 
-    @GetMapping(value = "/getBy/{BookId}")
-    public ResponseEntity<String> getBookDataById(@PathVariable int BookId)
+    @GetMapping(value = "/getBy/{bookId}")
+    public ResponseEntity<String> getBookDataById(@PathVariable Integer bookId)
     {
-        Optional<Book> Book = bookService.getBookDataById(BookId);
+        Optional<Book> Book = bookService.getBookDataById(bookId);
         ResponseDTO dto = new ResponseDTO("Data retrieved successfully by id (:",Book);
         return new ResponseEntity(dto,HttpStatus.OK);
     }
 
     // Ability to call api to delete book record by BookId
 
-    @DeleteMapping("/delete/{BookId}")
-    public ResponseEntity<String> deleteRecordById(@PathVariable int BookId){
-        ResponseDTO dto = new ResponseDTO("Book Record deleted successfully", bookService.deleteRecordById(BookId));
+    @DeleteMapping("/delete/{bookId}")
+    public ResponseEntity<String> deleteRecordById(@PathVariable Integer bookId){
+        ResponseDTO dto = new ResponseDTO("Book Record deleted successfully", bookService.deleteRecordById(bookId));
         return new ResponseEntity(dto,HttpStatus.OK);
     }
 
     // Ability to call api to update book record by BookId
 
-    @PutMapping("/updateBookById/{BookId}")
-    public ResponseEntity<String> updateRecordById(@PathVariable Integer BookId,@Valid @RequestBody BookDTO bookDTO){
-        Book updateRecord = bookService.updateRecordById(BookId,bookDTO);
+    @PutMapping("/updateBookById/{bookId}")
+    public ResponseEntity<String> updateRecordById(@PathVariable Integer bookId,@Valid @RequestBody BookDTO bookDTO){
+        Book updateRecord = bookService.updateRecordById(bookId,bookDTO);
         ResponseDTO dto = new ResponseDTO(" Book Record updated successfully by Id",updateRecord);
         return new ResponseEntity(dto,HttpStatus.ACCEPTED);
     }

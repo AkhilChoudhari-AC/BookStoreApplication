@@ -7,7 +7,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 
 
- // Data transfer object of UserRegistration Model
+ // Data transfer object of User Model
 
 
 @Data

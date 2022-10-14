@@ -1,20 +1,20 @@
 package com.example.bookstoreapplication.model;
 
-// The @Entity annotation specifies that the class is an entity and is mapped to a database table
-
 import com.example.bookstoreapplication.dto.BookDTO;
 import lombok.Data;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+// The @Entity annotation specifies that the class is an entity and is mapped to a database table
 @Entity
 @Data
 public class Book {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer bookId;
     private String  bookName;
     private String  authorName;

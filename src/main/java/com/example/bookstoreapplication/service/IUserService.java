@@ -13,11 +13,11 @@ public interface IUserService {
 
     public List<User> getAllData();
 
-    public User getDataById(Integer id);
+    public User getDataById(Integer userId);
 
-    public User updateDataById(Integer id, UserDTO userDTO);
+    public User updateDataById(Integer userId, UserDTO userDTO);
 
-    public String deleteDataById(Integer id);
+    public String deleteDataById(Integer userId);
 
     public List<User> getDataByFirstName(String firstName);
 

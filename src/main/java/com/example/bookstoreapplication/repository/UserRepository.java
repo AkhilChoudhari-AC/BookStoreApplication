@@ -10,7 +10,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
 
 
-    // Query to find data by firstname
+    // Query to find data by firstName
     @Query(value="select * from user where first_name= :firstName",nativeQuery = true)
     List<User> findByFirstName(String firstName);
 

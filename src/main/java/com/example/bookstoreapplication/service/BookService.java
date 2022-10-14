@@ -36,8 +36,8 @@ public class BookService implements IBookService{
      // Ability to get book data by id
 
     @Override
-    public Optional<Book> getBookDataById(int BookId) {
-        Optional<Book> getBook=bookStoreRepository.findById(BookId);
+    public Optional<Book> getBookDataById(Integer bookId) {
+        Optional<Book> getBook=bookStoreRepository.findById(bookId);
         if(getBook.isEmpty()){
             throw new UserException("Book Store Details for id not found");
         }
@@ -56,13 +56,13 @@ public class BookService implements IBookService{
 
      //Ability to update book data for particular id
     @Override
-    public Book updateRecordById(Integer BookId, BookDTO bookDTO) {
+    public Book updateRecordById(Integer bookId, BookDTO bookDTO) {
 
-        Optional<Book> updateBook = bookStoreRepository.findById(BookId);
+        Optional<Book> updateBook = bookStoreRepository.findById(bookId);
         if (updateBook.isEmpty()) {
             throw new UserException("Book record does not found");
         } else {
-            Book updateUser = new Book(BookId, bookDTO);
+            Book updateUser = new Book(bookId, bookDTO);
             bookStoreRepository.save(updateUser);
             return updateUser;
 
@@ -71,12 +71,12 @@ public class BookService implements IBookService{
 
     // ability to delete data by particular book id
     @Override
-    public String deleteRecordById(int BookId) {
-        Optional<Book> newBook = bookStoreRepository.findById(BookId);
+    public String deleteRecordById(Integer bookId) {
+        Optional<Book> newBook = bookStoreRepository.findById(bookId);
         if (newBook.isEmpty()) {
             throw new UserException("Book record does not found");
         } else {
-            bookStoreRepository.deleteById(BookId);
+            bookStoreRepository.deleteById(bookId);
         }
         return "data deleted succesfull";
     }
@@ -97,8 +97,8 @@ public class BookService implements IBookService{
      //ability to get Book data by particular book Author name
 
     @Override
-    public List<Book> getBookByAuthorName(String author){
-        List<Book> findByAuthor = bookStoreRepository.findByBookAuthorName(author);
+    public List<Book> getBookByAuthorName(String authorName){
+        List<Book> findByAuthor = bookStoreRepository.findByBookAuthorName(authorName);
         if (findByAuthor.isEmpty()){
             throw new UserException("Author for this book is not available");
         }

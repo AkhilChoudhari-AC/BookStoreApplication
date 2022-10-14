@@ -45,26 +45,26 @@ import java.util.List;
         }
 
         // for getting data by Id from data base
-        @GetMapping("/get/{id}")
-        public ResponseEntity<String> getDataFromRepoById(@PathVariable Integer id) throws UserException {
-            User existingUser = service.getDataById(id);
+        @GetMapping("/get/{userId}")
+        public ResponseEntity<String> getDataFromRepoById(@PathVariable Integer userId) throws UserException {
+            User existingUser = service.getDataById(userId);
             ResponseDTO responseDTO = new ResponseDTO("Record for given ID Retrieved Successfully", existingUser);
             return new ResponseEntity(responseDTO, HttpStatus.OK);
         }
 
         // for updating data by id in database
-        @PutMapping("/update/{id}")
-        public ResponseEntity<String> updateDataInRepo(@PathVariable Integer id, @Valid @RequestBody UserDTO userDTO)
+        @PutMapping("/update/{userId}")
+        public ResponseEntity<String> updateDataInRepo(@PathVariable Integer userId, @Valid @RequestBody UserDTO userDTO)
                 throws UserException {
-            User updatedUser = service.updateDataById(id, userDTO);
+            User updatedUser = service.updateDataById(userId, userDTO);
             ResponseDTO responseDTO = new ResponseDTO("Record for particular ID Updated Successfully", updatedUser);
             return new ResponseEntity(responseDTO, HttpStatus.ACCEPTED);
         }
         //for deleting the data by Id in database
-        @DeleteMapping("/delete/{id}")
-        public ResponseEntity<String> deleteDataInRepo(@PathVariable Integer id) throws UserException {
+        @DeleteMapping("/delete/{userId}")
+        public ResponseEntity<String> deleteDataInRepo(@PathVariable Integer userId) throws UserException {
             ResponseDTO responseDTO = new ResponseDTO
-                    ("Record for particular ID Deleted Successfully", service.deleteDataById(id));
+                    ("Record for particular ID Deleted Successfully", service.deleteDataById(userId));
             return new ResponseEntity(responseDTO, HttpStatus.ACCEPTED);
         }
 
